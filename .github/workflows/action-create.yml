@@ -6,11 +6,11 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
 
-    name: Issue comment
-    runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo A comment on issue $NUMBER
-        env:
-          NUMBER: ${{ github.event.issue.number }}
-        
+
+    - name: Get Data
+      id: build-image
+      env:
+        Number: ${{ github.event.issue.number }}
+      run: |
+        echo A comment on issue $NUMBER
