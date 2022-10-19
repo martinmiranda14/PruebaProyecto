@@ -9,7 +9,6 @@ jobs:
     steps:
 
     - name: Get Data
+      run: echo A comment on issue $NUMBER
       env:
         Number: ${{ toJson(github) }}
-      run: |
-        echo A comment on issue $NUMBER
