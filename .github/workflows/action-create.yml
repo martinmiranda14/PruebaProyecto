@@ -6,6 +6,11 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
 
+    name: Issue comment
+    runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - run: |
+          echo A comment on issue $NUMBER
+        env:
+          NUMBER: ${{ github.event.issue.number }}
+        
