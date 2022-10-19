@@ -11,6 +11,6 @@ jobs:
     - name: Get Data
       id: build-image
       env:
-        Number: ${{ github.event.issue }}
+        Number: ${{ github.event.issue.actor }}
       run: |
         echo A comment on issue $NUMBER
