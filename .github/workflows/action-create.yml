@@ -9,8 +9,7 @@ jobs:
     steps:
 
     - name: Get Data
-      id: build-image
       env:
-        Number: ${{ github.event.issue.actor }}
+        Number: ${{ toJson(github) }}
       run: |
         echo A comment on issue $NUMBER
