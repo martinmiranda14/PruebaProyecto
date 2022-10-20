@@ -10,7 +10,7 @@ jobs:
 
     - name: Get Data
       env:
-        ACTOR: ${{ github.event.issue.login }}
+        ACTOR: ${{ github.event.issue.user.login }}
         NUMBER: ${{ github.event.issue.number }}
         BODY: ${{ github.event.issue.body }}
         TITLE: ${{ github.event.issue.title }}
