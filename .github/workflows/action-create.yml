@@ -9,6 +9,7 @@ jobs:
     steps:
 
     - name: Get Data
-      run: echo A comment on issue $NUMBER
+      run: echo $ACTOR a generado un nuevo issue  $NUMBER
       env:
-        NUMBER: ${{ toJson(github) }}
+        ACTOR: ${{ github.actor }}
+        NUMBER: ${{ toJson(github.event) }}
