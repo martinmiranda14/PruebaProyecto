@@ -11,4 +11,4 @@ jobs:
     - name: Get Data
       run: echo A comment on issue $NUMBER
       env:
-        Number: ${{ toJson(github) }}
+        Number: "Test"
