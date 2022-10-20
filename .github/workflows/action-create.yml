@@ -15,7 +15,7 @@ jobs:
         BODY: ${{ github.event.issue.body }}
         TITLE: ${{ github.event.issue.title }}
       run: |
-        echo $ACTOR a generado un nuevo issue #$NUMBER
+        echo $ACTOR a generado un nuevo issue $NUMBER
         echo "Detalles"
         echo Titulo: $TITLE
         echo Descripcion: $BODY
