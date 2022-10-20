@@ -12,4 +12,4 @@ jobs:
       run: echo $ACTOR a generado un nuevo issue  $NUMBER
       env:
         ACTOR: ${{ github.actor }}
-        NUMBER: ${{ toJson(github.event) }}
+        NUMBER: ${{ github.event.issue.number }}
