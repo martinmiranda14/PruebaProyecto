@@ -8,17 +8,24 @@ jobs:
 
     steps:
 
+    - name: Parse Body
+      uses: rishabhgupta/split-by@v1
+      id: split
+      with:
+        string: ${{ github.ref }}
+        split-by: '\n\n'
+
     - name: Get Data
       env:
+        TESTSPLIT: ${{ step.split.output._1 }}
         ACTOR: ${{ github.event.issue.user.login }}
         NUMBER: ${{ github.event.issue.number }}
-        BODY: ${{ github.event.issue.body }}
+        # BODY: ${{ github.event.issue.body }}
         TITLE: ${{ github.event.issue.title }}
-        JSON: ${{ toJson(github.event) }}
+        # JSON: ${{ toJson(github.event) }}
       run: |
         echo $ACTOR a generado un nuevo issue $NUMBER
         echo "Detalles"
         echo Titulo: $TITLE
-        echo Descripcion: $BODY
-        echo $JSON
+        echo $TESTSPLIT
       
