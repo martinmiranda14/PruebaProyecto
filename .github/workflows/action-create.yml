@@ -13,7 +13,7 @@ jobs:
       id: split
       with:
         string: "Test \n Body"
-        split-by: "\n"
+        split-by: "\r"
 
     - name: Get Data
       env:
@@ -27,6 +27,6 @@ jobs:
       run: |
         echo $TEST0
         echo $TEST1
-        echo ${{ steps.split.outputs }}
+        echo ${{ toJson(steps.split.outputs) }}
 
       
