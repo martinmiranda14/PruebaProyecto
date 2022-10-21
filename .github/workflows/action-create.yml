@@ -14,9 +14,11 @@ jobs:
         NUMBER: ${{ github.event.issue.number }}
         BODY: ${{ github.event.issue.body }}
         TITLE: ${{ github.event.issue.title }}
+        JSON: ${{ toJson(github.event) }}
       run: |
         echo $ACTOR a generado un nuevo issue $NUMBER
         echo "Detalles"
         echo Titulo: $TITLE
         echo Descripcion: $BODY
+        echo $JSON
       
