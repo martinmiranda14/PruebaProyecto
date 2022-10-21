@@ -12,8 +12,8 @@ jobs:
       uses: rishabhgupta/split-by@v1
       id: split
       with:
-        string: "Test\nBody"
-        split-by: '\\n'
+        string: "Test - Body"
+        split-by: "-"
 
     - name: Get Data
       env:
