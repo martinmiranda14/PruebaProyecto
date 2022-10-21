@@ -12,7 +12,7 @@ jobs:
       uses: rishabhgupta/split-by@v1
       id: split
       with:
-        string: ${{ github.ref }}
+        string: ${{ github.event.issue.body }}
         split-by: '\n\n'
 
     - name: Get Data
