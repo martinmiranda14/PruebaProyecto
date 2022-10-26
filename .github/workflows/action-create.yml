@@ -8,11 +8,19 @@ jobs:
 
     steps:
 
+    - name: Find-and-replace strings
+      id: replace
+      uses: mad9000/actions-find-and-replace-string@2
+      with:
+        source: ${{ github.event.issue.body }}
+        find: '\r\n'        # we want to remove ref/heads/ from source 
+        replace: ','               # and replace it with a blank string (ie. removing it)
+
     - name: Parse Body
       uses: JungWinter/split@v2.1.0
       id: split
       with:
-        msg: ${{ github.event.issue.body }}
+        msg: ${{ steps.replace.outputs.value }}
         separator: "\n\n"
 
     - name: Get Data
