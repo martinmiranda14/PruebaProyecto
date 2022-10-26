@@ -10,11 +10,11 @@ jobs:
 
     - name: Find-and-replace strings
       id: replace
-      uses: mad9000/actions-find-and-replace-string@2
+      uses: andac-ozcan/actions-find-and-replace-string@3
       with:
         source: "Hola soy un texto"
         find: ' '        # we want to remove ref/heads/ from source 
-        replace: ' no '               # and replace it with a blank string (ie. removing it)
+        replace: 'no'               # and replace it with a blank string (ie. removing it)
 
     # - name: Parse Body
     #   uses: JungWinter/split@v2.1.0
