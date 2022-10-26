@@ -12,8 +12,8 @@ jobs:
       uses: JungWinter/split@v2.1.0
       id: split
       with:
-        msg: "Test Body"
-        separator: " "
+        msg: "Test\nBody"
+        separator: "\n"
 
     - name: Get Data
       env:
