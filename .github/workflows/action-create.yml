@@ -10,7 +10,7 @@ jobs:
 
     - name: Find-and-replace strings
       id: replace
-      uses: LarsenLP/actions-find-and-replace-string@3
+      uses: LarsenLP/actions-find-and-replace-string@v3
       with:
         source: "Hola soy un texto"
         find: ' '        # we want to remove ref/heads/ from source 
