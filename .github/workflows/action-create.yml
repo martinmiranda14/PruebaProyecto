@@ -12,7 +12,7 @@ jobs:
       uses: JungWinter/split@v2.1.0
       id: split
       with:
-        msg: "Test\nBody"
+        msg: ${{ github.event.issue.body }}
         separator: "\n"
 
     - name: Get Data
