@@ -12,7 +12,7 @@ jobs:
       uses: rishabhgupta/split-by@v1
       id: split
       with:
-        string: "Test \n Body"
+        string: "Test Body"
         split-by: "\r"
 
     - name: Get Data
@@ -24,9 +24,9 @@ jobs:
         # BODY: ${{ github.event.issue.body }}
         TITLE: ${{ github.event.issue.title }}
         # JSON: ${{ toJson(github.event) }}
+        SPLIT: ${{ toJson(steps.split.outputs) }}
       run: |
         echo $TEST0
         echo $TEST1
-        echo ${{ toJson(steps.split.outputs) }}
 
       
