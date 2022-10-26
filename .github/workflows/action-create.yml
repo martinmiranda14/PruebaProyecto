@@ -9,11 +9,11 @@ jobs:
     steps:
 
     - name: Parse Body
-      uses: rishabhgupta/split-by@v1
+      uses: JungWinter/split@v2.1.0
       id: split
       with:
-        string: "Test Body"
-        split-by: " "
+        msg: "Test Body"
+        separator: " "
 
     - name: Get Data
       env:
