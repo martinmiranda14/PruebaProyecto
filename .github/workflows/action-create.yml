@@ -13,7 +13,7 @@ jobs:
       id: split
       with:
         string: "Test Body"
-        split-by: "\r"
+        split-by: " "
 
     - name: Get Data
       env:
