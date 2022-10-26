@@ -23,7 +23,7 @@ jobs:
         NUMBER: ${{ github.event.issue.number }}
         BODY: ${{ github.event.issue.body }}
         TITLE: ${{ github.event.issue.title }}
-        # JSON: ${{ toJson(github.event) }}
+        JSON: ${{ toJson(github.event) }}
         SPLIT: ${{ toJson(steps.split.outputs) }}
       run: |
         echo $TEST0
