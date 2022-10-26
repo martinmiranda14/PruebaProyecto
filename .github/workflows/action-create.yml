@@ -12,9 +12,9 @@ jobs:
       id: replace
       uses: LarsenLP/actions-find-and-replace-string@v3
       with:
-        source: "Hola soy un texto"
-        find: ' '        # we want to remove ref/heads/ from source 
-        replace: 'no'               # and replace it with a blank string (ie. removing it)
+        source: "Hola soy un texto textoso"
+        find: 'texto'        # we want to remove ref/heads/ from source 
+        replace: 'video'               # and replace it with a blank string (ie. removing it)
 
     # - name: Parse Body
     #   uses: JungWinter/split@v2.1.0
