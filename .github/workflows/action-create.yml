@@ -13,8 +13,8 @@ jobs:
       uses: LarsenLP/actions-find-and-replace-string@v3
       with:
         source: "Hola\r\nSoy un texto"
-        find: "\r\n"       # we want to remove ref/heads/ from source 
-        replace: ","               # and replace it with a blank string (ie. removing it)
+        find: '"\r\n"'       # we want to remove ref/heads/ from source 
+        replace: ','               # and replace it with a blank string (ie. removing it)
 
     # - name: Parse Body
     #   uses: JungWinter/split@v2.1.0
