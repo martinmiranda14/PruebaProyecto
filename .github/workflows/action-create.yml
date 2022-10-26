@@ -25,6 +25,7 @@ jobs:
 
     - name: Get Data
       env:
+        MSG: ${{ steps.replace.outputs.value }}
         TEST0:  ${{ steps.split.outputs._0 }}
         TEST1:  ${{ steps.split.outputs._1 }}
         ACTOR: ${{ github.event.issue.user.login }}
