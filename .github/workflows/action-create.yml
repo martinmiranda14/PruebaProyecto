@@ -12,28 +12,28 @@ jobs:
       id: replace
       uses: mad9000/actions-find-and-replace-string@2
       with:
-        source: ${{ github.event.issue.body }}
-        find: '\r\n'        # we want to remove ref/heads/ from source 
-        replace: ','               # and replace it with a blank string (ie. removing it)
+        source: "Hola soy un texto"
+        find: ' '        # we want to remove ref/heads/ from source 
+        replace: ' no '               # and replace it with a blank string (ie. removing it)
 
-    - name: Parse Body
-      uses: JungWinter/split@v2.1.0
-      id: split
-      with:
-        msg: ${{ steps.replace.outputs.value }}
-        separator: "\n\n"
+    # - name: Parse Body
+    #   uses: JungWinter/split@v2.1.0
+    #   id: split
+    #   with:
+    #     msg: ${{ steps.replace.outputs.value }}
+    #     separator: "\n\n"
 
     - name: Get Data
       env:
         MSG: ${{ steps.replace.outputs.value }}
-        TEST0:  ${{ steps.split.outputs._0 }}
-        TEST1:  ${{ steps.split.outputs._1 }}
-        ACTOR: ${{ github.event.issue.user.login }}
-        NUMBER: ${{ github.event.issue.number }}
-        BODY: ${{ github.event.issue.body }}
-        TITLE: ${{ github.event.issue.title }}
-        JSON: ${{ toJson(github.event) }}
-        SPLIT: ${{ toJson(steps.split.outputs) }}
+        # TEST0:  ${{ steps.split.outputs._0 }}
+        # TEST1:  ${{ steps.split.outputs._1 }}
+        # ACTOR: ${{ github.event.issue.user.login }}
+        # NUMBER: ${{ github.event.issue.number }}
+        # BODY: ${{ github.event.issue.body }}
+        # TITLE: ${{ github.event.issue.title }}
+        # JSON: ${{ toJson(github.event) }}
+        # SPLIT: ${{ toJson(steps.split.outputs) }}
       run: |
         echo $TEST0
         echo $TEST1
