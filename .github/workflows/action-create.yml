@@ -23,7 +23,14 @@ jobs:
           // Parsed Body
           const originalBody = process.env.ORIGINAL_BODY;
           const parsedBody = originalBody.split('\n\n');
-          console.log(parsedBody)
+
+          // Define data
+          const data = {
+            "system_affected": parseBody[1],
+            "other_system_affected": parseBody[3]
+          }
+
+          console.log(data)
           // const branch = ref.split('/').slice(-1)[0] // refs/heads/master → master
           // console.log(`branch: ${branch}`)
           // core.setOutput('branch', branch)
