@@ -12,7 +12,7 @@ jobs:
       uses: satackey/action-js-inline@v0.0.2
       id: sendData
       env:
-       TESTDATA: "Hello I am a test Data"
+       ORIGINAL_BODY: ${{ github.event.issue.body }}
       with:
         # Edit the following line to install packages required to run your script.
         required-packages: axios
@@ -20,9 +20,10 @@ jobs:
           const core = require('@actions/core')
           const axios = require('axios')
 
-          // branch
-          const ref = process.env.GITHUB_REF // refs/heads/master
-          console.log(process.env.TESTDATA)
+          // Parsed Body
+          const originalBody = process.env.ORIGINAL_BODY;
+          const parsedBody = originalBody.split('\n\n');
+          console.log(parsedBody)
           // const branch = ref.split('/').slice(-1)[0] // refs/heads/master → master
           // console.log(`branch: ${branch}`)
           // core.setOutput('branch', branch)
