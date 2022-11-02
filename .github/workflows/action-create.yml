@@ -22,7 +22,7 @@ jobs:
 
           // branch
           const ref = process.env.GITHUB_REF // refs/heads/master
-          console.log(process.env)
+          console.log(process.env.TESTDATA)
           // const branch = ref.split('/').slice(-1)[0] // refs/heads/master → master
           // console.log(`branch: ${branch}`)
           // core.setOutput('branch', branch)
