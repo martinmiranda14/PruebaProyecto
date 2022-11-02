@@ -7,33 +7,53 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-    - name: Find-and-replace strings
-      id: replace
-      uses: LarsenLP/actions-find-and-replace-string@v3
+    - name: Send Data Script
+      # To use latest action, specify "release-master" instead of "v0.0.2"
+      uses: satackey/action-js-inline@v0.0.2
+      id: sendData
       with:
-        source: "Hola\r\nSoy un texto"
-        find: "\r\n"       # we want to remove ref/heads/ from source 
-        replace: ','               # and replace it with a blank string (ie. removing it)
+        # Edit the following line to install packages required to run your script.
+        required-packages: axios
+        script: |
+          const core = require('@actions/core')
+          const axios = require('axios')
 
-    # - name: Parse Body
-    #   uses: JungWinter/split@v2.1.0
-    #   id: split
+          // branch
+          const ref = process.env.GITHUB_REF // refs/heads/master
+          console.log(process.env)
+          // const branch = ref.split('/').slice(-1)[0] // refs/heads/master → master
+          // console.log(`branch: ${branch}`)
+          // core.setOutput('branch', branch)
+
+
+# You can use datas as ${{ steps.getdata.outputs.branch }} and ${{ steps.getdata.outputs.date 
+
+    # - name: Find-and-replace strings
+    #   id: replace
+    #   uses: LarsenLP/actions-find-and-replace-string@v3
     #   with:
-    #     msg: ${{ steps.replace.outputs.value }}
-    #     separator: "\n\n"
+    #     source: "Hola\r\nSoy un texto"
+    #     find: "\r\n"       # we want to remove ref/heads/ from source 
+    #     replace: ','               # and replace it with a blank string (ie. removing it)
 
-    - name: Get Data
-      env:
-        MSG: ${{ toJson(steps.replace) }}
-        # TEST0:  ${{ steps.split.outputs._0 }}
-        # TEST1:  ${{ steps.split.outputs._1 }}
-        # ACTOR: ${{ github.event.issue.user.login }}
-        # NUMBER: ${{ github.event.issue.number }}
-        # BODY: ${{ github.event.issue.body }}
-        # TITLE: ${{ github.event.issue.title }}
-        # JSON: ${{ toJson(github.event) }}
-        # SPLIT: ${{ toJson(steps.split.outputs) }}
-      run: |
-        echo $TEST0
-        echo $TEST1
+    # # - name: Parse Body
+    # #   uses: JungWinter/split@v2.1.0
+    # #   id: split
+    # #   with:
+    # #     msg: ${{ steps.replace.outputs.value }}
+    # #     separator: "\n\n"
+
+    # - name: Get Data
+    #   env:
+    #     MSG: ${{ toJson(steps.replace) }}
+    #     # TEST0:  ${{ steps.split.outputs._0 }}
+    #     # TEST1:  ${{ steps.split.outputs._1 }}
+    #     # ACTOR: ${{ github.event.issue.user.login }}
+    #     # NUMBER: ${{ github.event.issue.number }}
+    #     # BODY: ${{ github.event.issue.body }}
+    #     # TITLE: ${{ github.event.issue.title }}
+    #     # JSON: ${{ toJson(github.event) }}
+    #     # SPLIT: ${{ toJson(steps.split.outputs) }}
+    #   run: |
+    #     echo $TEST0
+    #     echo $TEST1
