@@ -26,8 +26,8 @@ jobs:
 
           // Define data
           const data = {
-            "system_affected": parseBody[1],
-            "other_system_affected": parseBody[3]
+            "system_affected": parsedBody[1],
+            "other_system_affected": parsedBody[3]
           }
 
           console.log(data)
