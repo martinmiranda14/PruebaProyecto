@@ -14,6 +14,7 @@ jobs:
       env:
         TITLE: ${{ github.event.issue.title }}
         ACTOR: ${{ github.event.issue.user.login }}
+        URL: ${{ github.event.issue.html_url }}
         ORIGINAL_BODY: ${{ github.event.issue.body }}
         NUMBER: ${{ github.event.issue.number }}
         JSON: ${{ toJson(github.event) }}
@@ -33,6 +34,7 @@ jobs:
             "title": process.env.TITLE,
             "actor": process.env.ACTOR,
             "number": process.env.NUMBER,
+            "url": process.env.URL,
             "body": {
               "system_affected": parsedBody[1],
               "other_system_affected": parsedBody[3],
