@@ -17,7 +17,6 @@ jobs:
         URL: ${{ github.event.issue.url }}
         ORIGINAL_BODY: ${{ github.event.issue.body }}
         NUMBER: ${{ github.event.issue.number }}
-        JSON: ${{ toJson(github.event) }}
       with:
         # Edit the following line to install packages required to run your script.
         required-packages: axios
