@@ -12,7 +12,11 @@ jobs:
       uses: satackey/action-js-inline@v0.0.2
       id: sendData
       env:
-       ORIGINAL_BODY: ${{ github.event.issue.body }}
+        TITLE: ${{ github.event.issue.title }}
+        ACTOR: ${{ github.event.issue.user.login }}
+        ORIGINAL_BODY: ${{ github.event.issue.body }}
+        NUMBER: ${{ github.event.issue.number }}
+        JSON: ${{ toJson(github.event) }}
       with:
         # Edit the following line to install packages required to run your script.
         required-packages: axios
@@ -26,8 +30,20 @@ jobs:
 
           // Define data
           const data = {
-            "system_affected": parsedBody[1],
-            "other_system_affected": parsedBody[3]
+            "title": process.env.TITLE,
+            "actor": process.env.ACTOR,
+            "number": process.env.NUMBER,
+            "body": {
+              "system_affected": parsedBody[1],
+              "other_system_affected": parsedBody[3],
+              "environment_affected": parsedBody[5],
+              "other_environment_affected": parsedBody[7],
+              "app_version": parsedBody[9],
+              "details": parsedBody[11],
+              "steps": parsedBody[13],
+              "expected_result": parsedBody[15],
+              "aditional_data": parsedBody[17]
+            }
           }
 
           console.log(data)
