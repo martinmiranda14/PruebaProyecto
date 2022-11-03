@@ -14,7 +14,7 @@ jobs:
       env:
         TITLE: ${{ github.event.issue.title }}
         ACTOR: ${{ github.event.issue.user.login }}
-        URL: ${{ github.event.issue.html_url }}
+        URL: ${{ github.event.issue.url }}
         ORIGINAL_BODY: ${{ github.event.issue.body }}
         NUMBER: ${{ github.event.issue.number }}
         JSON: ${{ toJson(github.event) }}
