@@ -11,7 +11,7 @@ name: Deploy Production QA Copec Helm Chart
 jobs:
   deploy:
     name: Deploy
-    if: inputs.confirmation == 'yes'
+    if: inputs.confirmation == 'yes' && startsWith(github.ref, 'refs/tags/release')
     runs-on: ubuntu-latest
 
     steps:
