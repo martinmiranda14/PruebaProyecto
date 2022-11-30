@@ -1,9 +1,17 @@
 on:
-  issues:
-    types: [opened]
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        type: string
+        description: Are you sure you want to deploy to production? Type "yes" to confirm.
+        required: true
+
+name: Deploy Production QA Copec Helm Chart
+
 jobs:
   deploy:
     name: Deploy
+    if: inputs.confirmation == 'yes'
     runs-on: ubuntu-latest
 
     steps:
