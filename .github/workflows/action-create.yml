@@ -1,94 +1,17 @@
 on:
   workflow_dispatch:
-    inputs:
-      confirmation:
-        type: string
-        description: Are you sure you want to deploy to production? Type "yes" to confirm.
-        required: true
 
 name: Deploy Production QA Copec Helm Chart
 
+env:
+ Workflow: "Hola"
+ 
 jobs:
   deploy:
     name: Deploy
-    if: inputs.confirmation == 'yes' && startsWith(github.ref, 'refs/tags/release')
     runs-on: ubuntu-latest
-
     steps:
-    - name: Send Data Script
-      # To use latest action, specify "release-master" instead of "v0.0.2"
-      uses: satackey/action-js-inline@v0.0.2
-      id: sendData
-      env:
-        TITLE: ${{ github.event.issue.title }}
-        ACTOR: ${{ github.event.issue.user.login }}
-        URL: ${{ github.event.issue.url }}
-        ORIGINAL_BODY: ${{ github.event.issue.body }}
-        NUMBER: ${{ github.event.issue.number }}
-      with:
-        # Edit the following line to install packages required to run your script.
-        required-packages: axios
-        script: |
-          const core = require('@actions/core')
-          const axios = require('axios')
+    - name: "Say Hello Mona it's Monday"
+      run: echo "Today is $Workflow"
 
-          // Parsed Body
-          const originalBody = process.env.ORIGINAL_BODY;
-          const parsedBody = originalBody.split('\n\n');
-
-          // Define data
-          const data = {
-            "title": process.env.TITLE,
-            "actor": process.env.ACTOR,
-            "number": process.env.NUMBER,
-            "url": process.env.URL,
-            "body": {
-              "system_affected": parsedBody[1],
-              "other_system_affected": parsedBody[3],
-              "environment_affected": parsedBody[5],
-              "other_environment_affected": parsedBody[7],
-              "app_version": parsedBody[9],
-              "details": parsedBody[11],
-              "steps": parsedBody[13],
-              "expected_result": parsedBody[15],
-              "aditional_data": parsedBody[17]
-            }
-          }
-
-          console.log(data)
-          // const branch = ref.split('/').slice(-1)[0] // refs/heads/master → master
-          // console.log(`branch: ${branch}`)
-          // core.setOutput('branch', branch)
-
-
-# You can use datas as ${{ steps.getdata.outputs.branch }} and ${{ steps.getdata.outputs.date 
-
-    # - name: Find-and-replace strings
-    #   id: replace
-    #   uses: LarsenLP/actions-find-and-replace-string@v3
-    #   with:
-    #     source: "Hola\r\nSoy un texto"
-    #     find: "\r\n"       # we want to remove ref/heads/ from source 
-    #     replace: ','               # and replace it with a blank string (ie. removing it)
-
-    # # - name: Parse Body
-    # #   uses: JungWinter/split@v2.1.0
-    # #   id: split
-    # #   with:
-    # #     msg: ${{ steps.replace.outputs.value }}
-    # #     separator: "\n\n"
-
-    # - name: Get Data
-    #   env:
-    #     MSG: ${{ toJson(steps.replace) }}
-    #     # TEST0:  ${{ steps.split.outputs._0 }}
-    #     # TEST1:  ${{ steps.split.outputs._1 }}
-    #     # ACTOR: ${{ github.event.issue.user.login }}
-    #     # NUMBER: ${{ github.event.issue.number }}
-    #     # BODY: ${{ github.event.issue.body }}
-    #     # TITLE: ${{ github.event.issue.title }}
-    #     # JSON: ${{ toJson(github.event) }}
-    #     # SPLIT: ${{ toJson(steps.split.outputs) }}
-    #   run: |
-    #     echo $TEST0
-    #     echo $TEST1
+    
