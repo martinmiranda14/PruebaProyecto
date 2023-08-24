@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: "Say Hello Mona it's Monday"
+      if: ${{ env.WorkflowK == 'Monday' }}
+      env:
+        Workflow: Mona
+    - name: "Say Hello Mona it's Monday"
       run: echo "Today is $Workflow"
 
     
