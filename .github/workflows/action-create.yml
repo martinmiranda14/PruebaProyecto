@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: "Say Hello Mona it's Monday"
-      if: ${{ env.WorkflowK == 'Monday' }}
+      if: ${{ env.Workflow == 'Monday' }}
       env:
         Workflow: Mona
     - name: "Say Hello Mona it's Monday"
