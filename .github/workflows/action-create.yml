@@ -11,11 +11,13 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: "Say Hello Mona it's Monday"
+    - name: uno
+      run: echo "Today is $Workflow"
+    - name: dos
       if: ${{ env.Workflow == 'Monday' }}
-      env:
-        Workflow: Mona
-    - name: "Say Hello Mona it's Monday"
+      run: |
+        echo "Workflow=Chao" >> "$GITHUB_OUTPUT"
+    - name: tres
       run: echo "Today is $Workflow"
 
     
