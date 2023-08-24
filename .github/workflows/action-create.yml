@@ -16,7 +16,7 @@ jobs:
     - name: dos
       if: ${{ env.Workflow == 'Hola' }}
       run: |
-        echo "Workflow=Chao" >> "$GITHUB_OUTPUT"
+        echo "$GITHUB_OUTPUT"
     - name: tres
       run: echo "Today is $Workflow"
 
