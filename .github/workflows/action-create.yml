@@ -23,7 +23,7 @@ env:
  
 jobs:
   deploy:
-    if: inputs.is_prod  && inputs.flavor == 'copec'
+    if: inputs.is_prod  && inputs.flavor == 'copec' && inputs.buildnumber != null
     name: Deploy
     runs-on: ubuntu-latest
     steps:
