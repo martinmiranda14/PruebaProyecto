@@ -1,6 +1,21 @@
 on:
   workflow_dispatch:
-
+    inputs:
+      flavor:
+        type: choice
+        description: Select a flavor options
+        options:
+        - 'cotalker'
+        - 'copec'
+        required: true
+      is_prod:
+        type: boolean
+        description: Define is Production Mobile Deploy
+        default: false
+      buildnumber:
+        type: string
+        description: Build number used to package mobile apps. Write here the run number of the github action that released for web the tag your are trying to release (Only necesary in prod Mobile)
+        required: false
 name: Deploy Production QA Copec Helm Chart
 
 env:
@@ -8,16 +23,11 @@ env:
  
 jobs:
   deploy:
+    if: ${{ inputs.is_prod }} && ${{ inputs.flavor }} == 'copec'
     name: Deploy
     runs-on: ubuntu-latest
     steps:
     - name: uno
-      run: echo "Today is $Workflow"
-    - name: dos
-      if: ${{ env.Workflow == 'Hola' }}
-      run: |
-        echo "Workflow=Chao" >> $GITHUB_ENV
-    - name: tres
-      run: echo "Today is $Workflow"
+      run: echo "Today is Hola"
 
     
