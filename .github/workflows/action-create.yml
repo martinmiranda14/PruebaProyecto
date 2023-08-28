@@ -23,7 +23,7 @@ env:
  
 jobs:
   deploy:
-    if: ${{ !inputs.is_prod }}
+    if: inputs.is_prod  && inputs.flavor == 'copec'
     name: Deploy
     runs-on: ubuntu-latest
     steps:
