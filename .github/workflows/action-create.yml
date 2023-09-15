@@ -28,6 +28,7 @@ jobs:
                 ].join('\n')
               });
             } catch (e) {
-              console.log('PR ya existe')
+              console.log('PR ya existe');
+              console.log(e)
             }
             
