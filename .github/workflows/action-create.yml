@@ -25,5 +25,6 @@ jobs:
                 '[actions/github-script](https://github.com/actions/github-script).',
                 'Hello world'
               ].join('\n')
-            });
-            console.log(result)
+            }).catch(e){
+              console.log('PR ya existe')
+            };
