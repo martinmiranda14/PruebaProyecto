@@ -26,3 +26,4 @@ jobs:
                 'Hello world'
               ].join('\n')
             });
+            console.log(result)
