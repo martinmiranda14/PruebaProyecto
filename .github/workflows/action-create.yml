@@ -22,3 +22,4 @@ on:
 
       - name: Run custom script
         run: echo "This runs only when a PR is merged to development or manually on a PR targeting development!"
+
