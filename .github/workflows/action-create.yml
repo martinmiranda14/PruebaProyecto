@@ -5,7 +5,7 @@ on:
     types:
       - closed  # Detecta cuando un PR se mergea
     branches:
-      - development  # Solo PRs que se mergean a development
+      - master  # Solo PRs que se mergean a development
 
   workflow_dispatch:  # Permite ejecución manual
 
