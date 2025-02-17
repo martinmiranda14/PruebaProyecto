@@ -9,16 +9,14 @@ on:
 
   workflow_dispatch:  # Permite ejecución manual
 
-  jobs:
+jobs:
   run-on-dev:
     runs-on: ubuntu-latest
-    if: >
-      github.event_name == 'workflow_dispatch' && github.event.pull_request.base.ref == 'development' ||
-      github.event_name == 'pull_request' && github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'development'
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Run custom script
-        run: echo "This runs only when a PR is merged to development or manually on a PR targeting development!"
+        run: echo "This runs only when a PR is merged to development or manually on a PR targeting development {{ github.event.pull_request.base.ref }}"
+
