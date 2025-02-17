@@ -9,7 +9,7 @@ on:
 
   workflow_dispatch:  # Permite ejecución manual
 
-  jobs:
+jobs:
   run-on-dev:
     runs-on: ubuntu-latest
     if: >
