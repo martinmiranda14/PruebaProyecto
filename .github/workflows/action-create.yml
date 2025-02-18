@@ -6,18 +6,18 @@ on:
       - closed  # Detecta cuando un PR se mergea
     branches:
       - master  # Solo PRs que se mergean a development
-
   workflow_dispatch:  # Permite ejecución manual
 
 jobs:
-  run-on-dev:
+  check-execution:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Definir variable inicial
+        run: echo "EXECUTION_TYPE=automatic" >> $GITHUB_ENV
 
-      - name: Run custom script
+      - name: Modificar variable si la ejecución es manual
         if: github.event_name == 'workflow_dispatch'
-        run: echo "This runs only when a PR is merged to development or manually on a PR targeting development {{ github.event.pull_request.base.ref }}"
+        run: echo "EXECUTION_TYPE=manual" >> $GITHUB_ENV
 
+      - name: Mostrar valor final de la variable
+        run: echo "Tipo de ejecución: $EXECUTION_TYPE"
