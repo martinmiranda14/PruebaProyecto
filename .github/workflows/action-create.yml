@@ -18,5 +18,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run custom script
+        if: github.event_name == 'workflow_dispatch'
         run: echo "This runs only when a PR is merged to development or manually on a PR targeting development {{ github.event.pull_request.base.ref }}"
 
