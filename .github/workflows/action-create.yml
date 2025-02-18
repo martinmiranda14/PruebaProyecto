@@ -20,4 +20,4 @@ jobs:
         run: echo "EXECUTION_TYPE=manual" >> $GITHUB_ENV
 
       - name: Mostrar valor final de la variable
-        run: echo "Tipo de ejecución: $EXECUTION_TYPE"
+        run: echo "Tipo de ejecución $EXECUTION_TYPE"
