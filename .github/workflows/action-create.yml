@@ -6,7 +6,6 @@ on:
       - closed  # Detecta cuando un PR se mergea
     branches:
       - master  # Solo PRs que se mergean a development
-
   workflow_dispatch:  # Permite ejecución manual
 
 jobs:
@@ -22,4 +21,3 @@ jobs:
 
       - name: Mostrar valor final de la variable
         run: echo "Tipo de ejecución $EXECUTION_TYPE"
-
